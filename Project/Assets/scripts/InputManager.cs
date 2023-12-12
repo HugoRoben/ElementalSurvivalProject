@@ -13,6 +13,14 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown("left shift"))
+        {
+            movePlayer.movementSpeed += 10;
+        }
+        if (Input.GetKeyUp("left shift"))
+        {
+            movePlayer.movementSpeed -= 10;
+        }
         HandleMovementInput();
     }
 

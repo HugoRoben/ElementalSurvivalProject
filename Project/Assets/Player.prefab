@@ -743,7 +743,6 @@ GameObject:
   - component: {fileID: 2486486159745111102}
   - component: {fileID: 8386240345724522052}
   - component: {fileID: 2669364094540954277}
-  - component: {fileID: 2669364094540954278}
   - component: {fileID: 2669364094540954272}
   - component: {fileID: 2669364094540954279}
   m_Layer: 6
@@ -808,24 +807,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &2669364094540954278
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3011242741040942724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.7739464, z: 0.38614282}
-  m_Center: {x: 2.0997083e-11, y: 0.89736, z: -0.00087781367}
 --- !u!114 &2669364094540954272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4822f1e820c48ac4dbe590d3a598b5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   bulletPrefabArray:
   - {fileID: 8909591610959309791, guid: b304b969ec2f95a4192b47dbfe44d41c, type: 3}
   - {fileID: 7763160019020784605, guid: 08914c21788c94645b7cfff59a6af4a2, type: 3}
@@ -860,7 +847,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   firePoint: {fileID: 2669364094677318330}
   aimpoint: {fileID: 2669364094153182893}
-  bulletForce: 23.09
+  bulletForce: 28
 --- !u!1 &3257849912020743862
 GameObject:
   m_ObjectHideFlags: 0

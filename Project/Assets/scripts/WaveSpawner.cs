@@ -66,6 +66,7 @@ public class WaveSpawner : MonoBehaviour
 
         Vector3 SpawnPos;
         int randomIndex = Random.Range(0, spawnPoints.Length);
+        // Debug.Log("INDEX: " + randomIndex);
 
         float xLoc = Random.Range(-spawnRange, spawnRange) + spawnPoints[randomIndex].position.x;
         float zLoc = Random.Range(-spawnRange, spawnRange) + spawnPoints[randomIndex].position.z;

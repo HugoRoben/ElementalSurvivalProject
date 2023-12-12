@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     // public Image Healthbar;
-    public float healthAmount = 60f;
+    public float healthAmount = 100f;
+    public Image healthBar;
 
     public void TakeDamage(float Damage)
     {
         healthAmount -= Damage;
+        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+        healthBar.fillAmount = healthAmount / 80f;
         if (healthAmount <= 10)
         {
             Destroy(gameObject);
@@ -23,5 +26,8 @@ public class HealthManager : MonoBehaviour
     {
         healthAmount += healingAmount;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+        healthBar.fillAmount = healthAmount / 80f;
     }
+
+    
 }

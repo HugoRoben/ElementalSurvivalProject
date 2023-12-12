@@ -10,6 +10,8 @@ public class PlayerAnimations : MonoBehaviour
     private Animator knop;
     private int previousAnimatorStateHash;
 
+    public Camera cam;
+
     void Start()
     {
         knop = GetComponent<Animator>();
@@ -88,23 +90,34 @@ public class PlayerAnimations : MonoBehaviour
     public Transform aimpoint;
     public float bulletForce = 10f;
     GameObject bullet;
-    // public void BulletSpawnfromAnimationEvent()
-    // {
-    //     // Instantiate a new bullet at the firePoint position and rotation
+    
 
-    // }
     // This function will be called from the Animation Event
     public void FireBulletFromAnimationEvent()
     {
+        
         bullet = Instantiate(bulletPrefabArray[inventoryUI.selectedItemIndex],
         firePoint.position, firePoint.rotation);
          // Get the Rigidbody component of the bullet
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        
 
         // Check if the bullet's Rigidbody component exists
         if (bulletRb != null)
         {
-            Vector3 shootDirection = transform.forward;
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            RaycastHit hit;
+
+            Vector3 shootDirection;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                shootDirection = hit.transform.position - transform.transform.position;
+            }
+            else
+            {
+                shootDirection = transform.forward;
+            }
             shootDirection.y = 0f;
             // Apply velocity to the bullet in the forward direction
             bulletRb.velocity = shootDirection.normalized * bulletForce;

@@ -4,7 +4,8 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Transform player;
+    // Transform player = GameObject.Find("Player").transform;
+
     public LayerMask whatIsGround, whatIsPlayer;
     //patrolling
     public Vector3 walkPoint;
@@ -26,10 +27,17 @@ public class EnemyAi : MonoBehaviour
         Attack,
         Hit
     }
+    Transform player;
     public float speed = 5.0f;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
+        if (player != null)
+        {
+            // float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            // // Debug.Log($"Distance to Player: {distanceToPlayer}");
+            // Debug.Log(distanceToPlayer < sightRange);
+        }
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         mAnimator = GetComponent<Animator>();
@@ -37,12 +45,16 @@ public class EnemyAi : MonoBehaviour
         state = State.Idle;
 
     }
-
-    int begin;
     private void Update()
     {
+        // Debug.Log($"Current State: {state}, PlayerInSightRange: {playerInSightRange}, PlayerInAttackRange: {playerInAttackRange}");
+        // float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        // Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        // Debug.Log(playerInSightRange);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        // Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         switch (state)
         {
@@ -77,13 +89,32 @@ public class EnemyAi : MonoBehaviour
         if (playerInSightRange && playerInAttackRange) state = State.Attack;
 
     }
-
+    public float stoppingDistance = 3f;
     private void Approaching()
     {
         mAnimator.SetBool("Idle", false);
         mAnimator.SetBool("isApproaching", true);
         mAnimator.SetBool("isAttacking", false);
-        agent.SetDestination(player.position);
+        
+        // agent.SetDestination(player.position);
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        // Check if the distance to the player is greater than the stopping distance
+        if (distanceToPlayer > stoppingDistance)
+        {
+            // Calculate a point 2 units away from the player in the direction of the player
+            Vector3 destinationPoint = player.position - (player.position - transform.position).normalized * stoppingDistance;
+
+            // Set the destination to the calculated point
+            agent.SetDestination(destinationPoint);
+        }
+        else
+        {
+            // Stop approaching when within the stopping distance
+            agent.ResetPath();
+        }
+
         if (playerInSightRange && playerInAttackRange) state = State.Attack;
         if (!playerInSightRange && !playerInAttackRange) state = State.Idle;
     }
@@ -122,6 +153,28 @@ public class EnemyAi : MonoBehaviour
 
         // checks if new walkpoint is on the ground with a raycast
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) walkPointSet = true;
+    }
+
+    public Transform meleeHitbox;
+    public void DamageAnimationEvent()
+    {
+
+        var gameManager = FindObjectOfType<PlayerhealthManager>();
+        Debug.Log(gameManager);
+        if (gameManager != null)
+        {
+            float radius  = 5;
+            float distance = Vector3.Distance(player.position, meleeHitbox.position);
+            Debug.Log(distance);
+            
+            // Debug.Log("Gamemanager found");
+            if (distance <= radius)
+            {
+                
+                gameManager.PlayerTakeDamage(5);
+                Debug.Log(gameManager.healthAmount);
+            }
+        }
     }
 }
 
