@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public RenderTexture waterTexture;
     public RenderTexture fireTexture;
     public RenderTexture airTexture;
+    public RenderTexture earthTexture;
     int index;
     public void ChooseWater()
     {
@@ -30,7 +31,7 @@ public class MainMenu : MonoBehaviour
     public void ChooseEarth()
     {
         index = 2;
-        // ChangeRawImageTexture(earthTexture);
+        rawImage.texture = earthTexture;
     }
     public void LoadLevel()
     {

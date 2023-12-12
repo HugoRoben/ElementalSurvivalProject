@@ -10,6 +10,8 @@ TagManager:
   - EnemyWater
   - EnemyAir
   - EnemyEarth
+  - EnemyBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     // public Image Healthbar;
     public float healthAmount = 100f;
     public Image healthBar;
+    public Animator enemyAnimator;
 
     public void TakeDamage(float Damage)
     {
@@ -16,7 +17,11 @@ public class HealthManager : MonoBehaviour
         healthBar.fillAmount = healthAmount / 80f;
         if (healthAmount <= 10)
         {
-            Destroy(gameObject);
+            enemyAnimator.SetTrigger("isDying");
+            enemyAnimator.SetBool("isApproaching", false);
+            enemyAnimator.SetBool("Idle", false);
+            enemyAnimator.SetBool("isAttacking", false);
+            // Destroy(gameObject);
             var Spawner = FindObjectOfType<WaveSpawner>();
             Spawner.EnemiesKilled ++;
         }
@@ -27,6 +32,10 @@ public class HealthManager : MonoBehaviour
         healthAmount += healingAmount;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
         healthBar.fillAmount = healthAmount / 80f;
+    }
+    public void DeathAnimationEvent()
+    {
+        Destroy(gameObject);
     }
 
     

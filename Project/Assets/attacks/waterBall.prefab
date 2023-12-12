@@ -4837,7 +4837,7 @@ GameObject:
   - component: {fileID: 6762797627197245146}
   m_Layer: 0
   m_Name: waterBall
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9676,8 +9676,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.26271185
+  m_Center: {x: 0, y: -0.01781845, z: 0}
 --- !u!114 &6762797627197245146
 MonoBehaviour:
   m_ObjectHideFlags: 0
