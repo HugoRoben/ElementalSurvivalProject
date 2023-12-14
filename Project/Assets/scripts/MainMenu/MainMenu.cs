@@ -6,25 +6,24 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+
     public RawImage rawImage;
     public RenderTexture waterTexture;
     public RenderTexture fireTexture;
     public RenderTexture airTexture;
     public RenderTexture earthTexture;
-    int index;
+    int index = -1;
+    void Start()
+    {
+        rawImage.texture = airTexture;
+    }
     public void ChooseWater()
     {
-        index = 1;
         rawImage.texture = waterTexture;
-    }
-    public void ChooseFire()
-    {
-        index = 1;
-        rawImage.texture = fireTexture;
     }
     public void ChooseAir()
     {
-        index = 2;
+        index = 1;
         rawImage.texture = airTexture;
         // ChangeRawImageTexture(airTexture);
     }
@@ -35,6 +34,9 @@ public class MainMenu : MonoBehaviour
     }
     public void LoadLevel()
     {
-        SceneManager.LoadScene(index);
+        if (index != -1)
+        {
+            SceneManager.LoadScene(index);
+        }
     }
 }

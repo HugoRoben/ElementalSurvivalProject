@@ -29,7 +29,7 @@ public class PlayerhealthManager : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
 

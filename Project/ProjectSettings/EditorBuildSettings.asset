@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelection.unity
     guid: 15753bcb2ab7031419e88ed9ab33410b
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/Airscene.unity
-    guid: cc29cf2c6e942fa49b9ac0070dc7ac7c
-  - enabled: 0
-    path: Assets/Scenes/WaterScene.unity
-    guid: c6abe7a1f94bf854a97524db24969a97
+    path: Assets/Scenes/Airscene 1.unity
+    guid: c0ac0080b60bb474485a626d38149ceb
+  - enabled: 1
+    path: Assets/Scenes/EarthScene.unity
+    guid: 91f2e8969bf7bfe4682ccd7fac9db331
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 2d5f16340c603df438cc3326e67df0d9
   m_configObjects: {}

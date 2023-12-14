@@ -17,17 +17,23 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        // Debug.Log("Slot length: " + slots.Length);
         selectedItemIndex = 0;
         UpdateItemSelectionUI();
     }
 
     public TextMeshProUGUI  health;
+    public TextMeshProUGUI  enemiesKilled;
+    public TextMeshProUGUI  enemiesTotal;
+    public TextMeshProUGUI roundNumber;
     public PlayerhealthManager playerhealthManager;
+    public WaveSpawner waveSpawner;
+
     void Update()
     {
         HandleItemScrolling();
         health.text = playerhealthManager.healthAmount.ToString();
+        enemiesKilled.text = waveSpawner.EnemiesKilled.ToString();
+        enemiesTotal.text = waveSpawner.Waves[waveSpawner.CurrentWave].GetMonsterSpawnList().Length.ToString();
     }
 
     void UpdateUI()

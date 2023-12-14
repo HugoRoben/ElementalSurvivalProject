@@ -14,11 +14,11 @@ public class WaveSpawner : MonoBehaviour
         } 
     }
 
-    [SerializeField] WaveContent[] Waves;
+    [SerializeField] public WaveContent[] Waves;
 
     public InputManager inputManager;
 
-    int CurrentWave = 0;
+    public int CurrentWave = 0;
     public float spawnRange = 5;
     // public List<GameObject> CurrentMonsters;
     public int EnemiesKilled = 0;
@@ -30,14 +30,21 @@ public class WaveSpawner : MonoBehaviour
     {
         SpawnWave();
     }
-
+    public InventoryUI inventoryUI;
     void Update()
     {
-        if (EnemiesKilled >= Waves[CurrentWave].GetMonsterSpawnList().Length)
+        Debug.Log("Killed" + EnemiesKilled);
+        Debug.Log("Total" + Waves[CurrentWave].GetMonsterSpawnList().Length);
+
+        if (EnemiesKilled == Waves[CurrentWave].GetMonsterSpawnList().Length)
         {
             EnemiesKilled = 0;
             CurrentWave ++;
-            SpawnWave();
+            inventoryUI.roundNumber.text = "Round " + CurrentWave.ToString();
+            Invoke(inventoryUI.roundNumber.text = "", 2);
+            Invoke("SpawnWave", 3);
+            if (CurrentWave == 1) spawnAirPickup();
+            if (CurrentWave == 2) spawnEarthPickup();
         }
     }
 
@@ -46,13 +53,21 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < Waves[CurrentWave].GetMonsterSpawnList().Length; i++)
         {
             Instantiate(Waves[CurrentWave].GetMonsterSpawnList()[i], FindSpawnLoc(), Quaternion.identity);
-
-            // if (i == 1)
-            // {
-            //     Instantiate(waterPerk, waterSpawner.position, waterSpawner.rotation);
-            // }
         }
+    }
 
+    // variables needed to spawn items to pickup new attacks in game
+    public GameObject airPickUp;
+    public GameObject earthPickUp;
+    public Transform airPickUpTransform;
+    public Transform earthPickUpTransform;
+    void spawnAirPickup()
+    {
+        Instantiate(airPickUp, airPickUpTransform.position, airPickUpTransform.rotation);
+    }
+    void spawnEarthPickup()
+    {
+        Instantiate(earthPickUp, earthPickUpTransform.position, earthPickUpTransform.rotation);
     }
 
     // make a list of spawnpoints

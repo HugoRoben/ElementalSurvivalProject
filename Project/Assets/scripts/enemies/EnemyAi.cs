@@ -5,15 +5,10 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
     public NavMeshAgent agent;
-    // Transform player = GameObject.Find("Player").transform;
-
     public LayerMask whatIsGround, whatIsPlayer;
-    //patrolling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
-    // attacking
-    // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     public bool isPatroling = false;
@@ -79,7 +74,7 @@ public class EnemyAi : MonoBehaviour
         if (playerInSightRange && playerInAttackRange) state = State.Attack;
 
     }
-    public float stoppingDistance = 1.5f;
+    public float stoppingDistance = 1f;
     private void Approaching()
     {
         mAnimator.SetTrigger("enemyShoot");
@@ -109,16 +104,12 @@ public class EnemyAi : MonoBehaviour
         if (playerInSightRange && playerInAttackRange) state = State.Attack;
         if (!playerInSightRange && !playerInAttackRange) state = State.Idle;
     }
-
-    [SerializeField] private float timer = 5.0f;
-    public float bulletTime;
     public GameObject projectile;
     public float bulletForce;
     public Transform firePoint;
 
     public void ShootAtPlayer()
     {
-        // Debug.Log("bullettime:" + bulletTime);
         if (player != null)
         {
             // Calculate the direction from the enemy to the player
@@ -136,7 +127,6 @@ public class EnemyAi : MonoBehaviour
         firePoint.position, firePoint.rotation);
          // Get the Rigidbody component of the bullet
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        // if (bulletRb != null) Debug.Log("bulletrb");
         
         Vector3 shootDirection;
         // Check if the bullet's Rigidbody component exists
@@ -148,11 +138,9 @@ public class EnemyAi : MonoBehaviour
             bulletRb.velocity = shootDirection.normalized * bulletForce;
         }
     }
-    // public EnemyAttackCollision enemyAttackCollision;
-    public float rotationSpeed = 5.0f;
+    public float rotationSpeed = 8.0f;
     private void Attacking()
     {
-        // Debug.Log("attack");
         mAnimator.SetBool("Idle", false);
         mAnimator.SetBool("isApproaching", false);
         mAnimator.SetBool("isAttacking", true);
@@ -188,22 +176,12 @@ public class EnemyAi : MonoBehaviour
     public Transform meleeHitbox;
     public void DamageAnimationEvent()
     {
-
         var gameManager = FindObjectOfType<PlayerhealthManager>();
-        // Debug.Log(gameManager);
         if (gameManager != null)
         {
-            float radius  = 9;
+            float radius  = 7;
             float distance = Vector3.Distance(player.position, meleeHitbox.position);
-            // Debug.Log(distance);
-            
-            // Debug.Log("Gamemanager found");
-            if (distance <= radius)
-            {
-                
-                gameManager.PlayerTakeDamage(3);
-                // Debug.Log(gameManager.healthAmount);
-            }
+            if (distance <= radius) gameManager.PlayerTakeDamage(3);
         }
     }
 

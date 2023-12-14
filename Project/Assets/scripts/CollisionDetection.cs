@@ -3,25 +3,29 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
+    public int waterAttackDamage = 20;
+    public int airAttackDamage = 5;
+    public int earthAttackDamage = 40;
     void OnCollisionEnter(Collision collision)
     {
 
         if (collision.gameObject.CompareTag("EnemyFire"))
         {
-            WalkTrigger walkTrigger = collision.gameObject.GetComponent<WalkTrigger>();
             HealthManager healthManager = collision.gameObject.GetComponent<HealthManager>();
 
-            if (walkTrigger != null)
-            {
-                walkTrigger.GetHit = true;
-            }
             if (healthManager != null)
             {
                 var inventoryUI = FindObjectOfType<InventoryUI>();
-                // check if selected attack is water, effective against fire enemy
-                if (inventoryUI.selectedItemIndex == 1) healthManager.TakeDamage(60);
 
-                else healthManager.TakeDamage(20);
+                if (inventoryUI.selectedItemIndex == 0) healthManager.TakeDamage(waterAttackDamage);
+                if (inventoryUI.selectedItemIndex == 1) 
+                {
+                    if (healthManager.healthAmount > 5)
+                    {
+                        healthManager.TakeDamage(airAttackDamage);
+                    }
+                }
+                if (inventoryUI.selectedItemIndex == 2) healthManager.TakeDamage(earthAttackDamage);
 
                 Destroy(gameObject);
             }
