@@ -66,7 +66,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             knop.SetBool("MoveBackAnimation", false);
         }
-        if (Input.GetKey("space"))
+        if (Input.GetMouseButtonDown(0))
         {
             knop.SetTrigger("CastSpell");
             Frames(5);

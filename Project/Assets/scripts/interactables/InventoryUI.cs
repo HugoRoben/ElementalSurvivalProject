@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -20,9 +22,12 @@ public class InventoryUI : MonoBehaviour
         UpdateItemSelectionUI();
     }
 
+    public TextMeshProUGUI  health;
+    public PlayerhealthManager playerhealthManager;
     void Update()
     {
         HandleItemScrolling();
+        health.text = playerhealthManager.healthAmount.ToString();
     }
 
     void UpdateUI()

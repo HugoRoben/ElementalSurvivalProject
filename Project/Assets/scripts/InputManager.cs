@@ -10,16 +10,16 @@ public class InputManager : MonoBehaviour
     public MovePlayer movePlayer;
     public ShootBullet shootbullet;
 
-
+    public float sprintSpeedAdd = 3;
     void Update()
     {
         if (Input.GetKeyDown("left shift"))
         {
-            movePlayer.movementSpeed += 10;
+            movePlayer.movementSpeed += sprintSpeedAdd;
         }
         if (Input.GetKeyUp("left shift"))
         {
-            movePlayer.movementSpeed -= 10;
+            movePlayer.movementSpeed -= sprintSpeedAdd;
         }
         HandleMovementInput();
     }

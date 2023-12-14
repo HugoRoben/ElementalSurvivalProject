@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fd6693b44fe8144a749fda846f24cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmount: 100
+  healthAmount: 70
   healthBar: {fileID: 9067248964003921831}
   enemyAnimator: {fileID: 98002879279447006}
 --- !u!114 &6472240178222067767
