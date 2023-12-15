@@ -31,44 +31,29 @@ public class PlayerAnimations : MonoBehaviour
         bool SIsHeld = Input.GetKey(KeyCode.S);
         chooseShootAnimation();
         // Check W key input
-        if (!MoveForwardAnimation && WIsHeld)
-        {
-            knop.SetBool(isWalkingHash, true);
-        }
-        if (MoveForwardAnimation && !WIsHeld)
-        {
-            knop.SetBool(isWalkingHash, false);
-        }
-        if (!MoveLeftAnimation && AIsHeld)
-        {
-            knop.SetBool("MoveLeftAnimation", true);
-        }
-        if (MoveLeftAnimation && !AIsHeld)
-        {
-            knop.SetBool("MoveLeftAnimation", false);
-        }
-        if (!MoveRightAnimation && DIsHeld)
-        {
-            knop.SetBool("MoveRightAnimation", true);
-        }
-        if (MoveRightAnimation && !DIsHeld)
-        {
-            knop.SetBool("MoveRightAnimation", false);
-        }
-        if (!MoveBackAnimation && SIsHeld)
-        {
-            knop.SetBool("MoveBackAnimation", true);
-        }
-        if (MoveBackAnimation && !SIsHeld)
-        {
-            knop.SetBool("MoveBackAnimation", false);
-        }
+        if (!MoveForwardAnimation && WIsHeld) knop.SetBool(isWalkingHash, true);
+
+        if (MoveForwardAnimation && !WIsHeld) knop.SetBool(isWalkingHash, false);
+
+        if (!MoveLeftAnimation && AIsHeld) knop.SetBool("MoveLeftAnimation", true);
+
+        if (MoveLeftAnimation && !AIsHeld) knop.SetBool("MoveLeftAnimation", false);
+    
+        if (!MoveRightAnimation && DIsHeld) knop.SetBool("MoveRightAnimation", true);
+
+        if (MoveRightAnimation && !DIsHeld) knop.SetBool("MoveRightAnimation", false);
+
+        if (!MoveBackAnimation && SIsHeld) knop.SetBool("MoveBackAnimation", true);
+
+        if (MoveBackAnimation && !SIsHeld) knop.SetBool("MoveBackAnimation", false);
+
         if (Input.GetMouseButtonDown(0))
         {
             knop.SetTrigger("CastSpell");
             Frames(5);
-    
         }
+        if (Input.GetKeyDown(KeyCode.E)) knop.SetTrigger("RollRight");
+        if (Input.GetKeyDown(KeyCode.Q)) knop.SetTrigger("RollLeft");      
     }
 
     private void chooseShootAnimation()

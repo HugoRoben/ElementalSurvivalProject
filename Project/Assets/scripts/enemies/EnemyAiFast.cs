@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
+// using Unity.VisualScripting;
+// using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AI;
 public class EnemyAiFast : MonoBehaviour
 {
     public NavMeshAgent agent;
-    // Transform player = GameObject.Find("Player").transform;
 
     public LayerMask whatIsGround, whatIsPlayer;
     //patrolling
