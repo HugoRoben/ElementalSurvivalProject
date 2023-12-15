@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    // public Image Healthbar;
     public float healthAmount = 100f;
     public Image healthBar;
     public Animator enemyAnimator;
@@ -25,7 +24,6 @@ public class HealthManager : MonoBehaviour
             Spawner.EnemiesKilled ++;
         }
     }
-
     public void Heal(float healingAmount)
     {
         healthAmount += healingAmount;
@@ -36,6 +34,4 @@ public class HealthManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    
 }

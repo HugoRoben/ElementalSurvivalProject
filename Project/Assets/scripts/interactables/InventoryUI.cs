@@ -10,7 +10,6 @@ public class InventoryUI : MonoBehaviour
 
     public int selectedItemIndex = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         inventory = Inventory.instance;
@@ -61,7 +60,6 @@ public class InventoryUI : MonoBehaviour
             // Update the UI to reflect the selected item
             UpdateItemSelectionUI();
         }
-        // Debug.Log("index:" + selectedItemIndex);
     }
 
     void UpdateItemSelectionUI()

@@ -5,21 +5,14 @@ using System;
 
 public class InputManager : MonoBehaviour
 {
-    // item interactions
-
     public MovePlayer movePlayer;
-    public ShootBullet shootbullet;
-
     public float sprintSpeedAdd = 3;
     void Update()
     {
-        if (Input.GetKeyDown("left shift"))
+        if (!PauseMenu.isPaused)
         {
-            movePlayer.movementSpeed += sprintSpeedAdd;
-        }
-        if (Input.GetKeyUp("left shift"))
-        {
-            movePlayer.movementSpeed -= sprintSpeedAdd;
+            if (Input.GetKeyDown("left shift")) movePlayer.movementSpeed += sprintSpeedAdd;
+            if (Input.GetKeyUp("left shift")) movePlayer.movementSpeed -= sprintSpeedAdd;
         }
         HandleMovementInput();
     }

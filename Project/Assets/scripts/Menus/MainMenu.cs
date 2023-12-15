@@ -9,10 +9,9 @@ public class MainMenu : MonoBehaviour
 
     public RawImage rawImage;
     public RenderTexture waterTexture;
-    public RenderTexture fireTexture;
     public RenderTexture airTexture;
     public RenderTexture earthTexture;
-    int index = -1;
+    int index = 1;
     void Start()
     {
         rawImage.texture = airTexture;
@@ -25,7 +24,6 @@ public class MainMenu : MonoBehaviour
     {
         index = 1;
         rawImage.texture = airTexture;
-        // ChangeRawImageTexture(airTexture);
     }
     public void ChooseEarth()
     {
@@ -34,9 +32,6 @@ public class MainMenu : MonoBehaviour
     }
     public void LoadLevel()
     {
-        if (index != -1)
-        {
-            SceneManager.LoadScene(index);
-        }
+        SceneManager.LoadScene(index);
     }
 }

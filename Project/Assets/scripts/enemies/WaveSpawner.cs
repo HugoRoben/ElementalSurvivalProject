@@ -19,12 +19,7 @@ public class WaveSpawner : MonoBehaviour
     public InputManager inputManager;
 
     public int CurrentWave = 0;
-    public float spawnRange = 5;
-    // public List<GameObject> CurrentMonsters;
     public int EnemiesKilled = 0;
-
-    // public Transform waterSpawner;
-    // public GameObject waterPerk;
 
     void Start()
     {
@@ -81,8 +76,6 @@ public class WaveSpawner : MonoBehaviour
 
         Vector3 SpawnPos;
         int randomIndex = Random.Range(0, spawnPoints.Length);
-        // Debug.Log("INDEX: " + randomIndex);
-        // Random.Range(-spawnRange, spawnRange) + 
         float xLoc = spawnPoints[randomIndex].position.x;
         float zLoc = spawnPoints[randomIndex].position.z;
         float yLoc = transform.position.y;
@@ -90,14 +83,7 @@ public class WaveSpawner : MonoBehaviour
         SpawnPos = new Vector3(xLoc, yLoc, zLoc);
 
         // Use Physics.Raycast to check if the position is valid
-        if (Physics.Raycast(SpawnPos, Vector3.down, 5))
-        {
-            return SpawnPos;
-        }
-        else
-        {
-            // Recursive call with reduced maxAttempts
-            return FindSpawnLoc(maxAttempts - 1);
-        }
+        if (Physics.Raycast(SpawnPos, Vector3.down, 5)) return SpawnPos;
+        else return FindSpawnLoc(maxAttempts - 1);
     }
 }

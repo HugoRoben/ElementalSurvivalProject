@@ -20,13 +20,14 @@ public class CollisionDetection : MonoBehaviour
                 if (inventoryUI.selectedItemIndex == 0) healthManager.TakeDamage(waterAttackDamage);
                 if (inventoryUI.selectedItemIndex == 1) 
                 {
+                    // only call takedamage if player not already dead
                     if (healthManager.healthAmount > 5)
                     {
                         healthManager.TakeDamage(airAttackDamage);
                     }
                 }
                 if (inventoryUI.selectedItemIndex == 2) healthManager.TakeDamage(earthAttackDamage);
-
+                // Destroy bullet after collision
                 Destroy(gameObject);
             }
 
