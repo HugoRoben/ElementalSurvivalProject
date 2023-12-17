@@ -13,6 +13,9 @@ public class EnemyAi : MonoBehaviour
     public bool isApproaching = false;
     public bool isAttacking = false;
     private Animator mAnimator;
+    Transform player;
+    public float speed = 5.0f;
+    // possible animation states for enemies
     public State state;
     public enum State
     {
@@ -21,8 +24,6 @@ public class EnemyAi : MonoBehaviour
         Attack,
         Hit
     }
-    Transform player;
-    public float speed = 5.0f;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -33,6 +34,7 @@ public class EnemyAi : MonoBehaviour
     }
     private void Update()
     {
+        // check for distance to player, this determines state of the enemy
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -50,6 +52,7 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
+    // function performed during idle state of the enemies
     public void Patroling()
     {
         mAnimator.SetBool("Idle", true);
@@ -67,7 +70,11 @@ public class EnemyAi : MonoBehaviour
         if (playerInSightRange && playerInAttackRange) state = State.Attack;
 
     }
+
+    // stoppingdistance is the max distance the enemies can walk towards the player
     public float stoppingDistance = 1f;
+
+    // function performed during approaching state of the enemies
     private void Approaching()
     {
         mAnimator.SetTrigger("enemyShoot");
@@ -94,6 +101,7 @@ public class EnemyAi : MonoBehaviour
         if (playerInSightRange && playerInAttackRange) state = State.Attack;
         if (!playerInSightRange && !playerInAttackRange) state = State.Idle;
     }
+    // function performed during attacking state of enemies
     private void Attacking()
     {
         mAnimator.SetBool("Idle", false);
@@ -116,7 +124,6 @@ public class EnemyAi : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
-
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -128,6 +135,7 @@ public class EnemyAi : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) walkPointSet = true;
     }
 
+    // meleeHitbox is the point the distance is calculated from during the attack animation of the enemies.
     public Transform meleeHitbox;
     public void DamageAnimationEvent()
     {
@@ -139,8 +147,7 @@ public class EnemyAi : MonoBehaviour
             if (distance <= radius) gameManager.PlayerTakeDamage(3);
         }
     }
-
-    public float rotationSpeed = 8.0f;
+    // variables needer for ShootAtPlayer()
     public GameObject projectile;
     public float bulletForce;
     public Transform firePoint;
