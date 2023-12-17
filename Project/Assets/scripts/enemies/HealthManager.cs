@@ -22,6 +22,7 @@ public class HealthManager : MonoBehaviour
             enemyAnimator.SetBool("isAttacking", false);
             var Spawner = FindObjectOfType<WaveSpawner>();
             Spawner.EnemiesKilled ++;
+            Spawner.EnemiesTotal ++;
         }
     }
     public void Heal(float healingAmount)

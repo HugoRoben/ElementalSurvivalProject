@@ -6,9 +6,19 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PlayerhealthManager : MonoBehaviour
 {
+    public WaveSpawner waveSpawner;
+    // public GameOver gameOver;
     private void Update()
     {
-        if (healthAmount <= 0) LoadScene();
+        if (healthAmount <= 0) 
+        {
+            int finalRound = waveSpawner.CurrentWave + 1;
+            int totalKills = waveSpawner.EnemiesTotal;
+            // gameOver.totalKills = totalKills;
+            // gameOver.finalRoundNumber = finalRound;
+            LoadScene();
+        }
+        
     }
     public float healthAmount = 100f;
     public Image healthBar;

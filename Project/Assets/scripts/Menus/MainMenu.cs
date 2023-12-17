@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-
+    public GameObject controlsPopUp;
     public RawImage rawImage;
     public RenderTexture waterTexture;
     public RenderTexture airTexture;
@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         rawImage.texture = airTexture;
+        controlsPopUp.SetActive(false);
     }
     public void ChooseWater()
     {
@@ -33,5 +34,17 @@ public class MainMenu : MonoBehaviour
     public void LoadLevel()
     {
         SceneManager.LoadScene(index);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void OpenControls()
+    {
+        // pauseMenu.SetActive(false);
+        controlsPopUp.SetActive(true);
+    }
+    public void ExitControls()
+    {
+        // pauseMenu.SetActive(true);
+        controlsPopUp.SetActive(false);
     }
 }

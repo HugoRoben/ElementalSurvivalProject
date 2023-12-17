@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour
 
     public int CurrentWave = 0;
     public int EnemiesKilled = 0;
+    public int EnemiesTotal = 0;
+    
 
     void Start()
     {
@@ -28,9 +30,8 @@ public class WaveSpawner : MonoBehaviour
     public InventoryUI inventoryUI;
     void Update()
     {
-        Debug.Log("Killed" + EnemiesKilled);
-        Debug.Log("Total" + Waves[CurrentWave].GetMonsterSpawnList().Length);
-
+        PlayerPrefs.SetInt("EnemiesTotal", EnemiesTotal);
+        PlayerPrefs.SetInt("CurrentWave", CurrentWave);
         if (EnemiesKilled == Waves[CurrentWave].GetMonsterSpawnList().Length)
         {
             EnemiesKilled = 0;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -22,17 +23,18 @@ public class InventoryUI : MonoBehaviour
 
     public TextMeshProUGUI  health;
     public TextMeshProUGUI  enemiesKilled;
-    public TextMeshProUGUI  enemiesTotal;
     public TextMeshProUGUI roundNumber;
     public PlayerhealthManager playerhealthManager;
     public WaveSpawner waveSpawner;
 
     void Update()
     {
+        int ThisWave = waveSpawner.CurrentWave + 1;
         HandleItemScrolling();
         health.text = playerhealthManager.healthAmount.ToString();
-        enemiesKilled.text = waveSpawner.EnemiesKilled.ToString();
-        enemiesTotal.text = waveSpawner.Waves[waveSpawner.CurrentWave].GetMonsterSpawnList().Length.ToString();
+        enemiesKilled.text = waveSpawner.EnemiesTotal.ToString();
+        roundNumber.text = ThisWave.ToString();
+        // roundNumber.text = waveSpawner.Waves[waveSpawner.CurrentWave].GetMonsterSpawnList().Length.ToString();
     }
 
     void UpdateUI()
