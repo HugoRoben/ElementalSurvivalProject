@@ -10374,7 +10374,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1301412038}
   - component: {fileID: 1301412037}
-  - component: {fileID: 1301412036}
   m_Layer: 0
   m_Name: inputManager
   m_TagString: Untagged
@@ -10382,18 +10381,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1301412036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301412035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fdacaa68113e8045a5fb7cba22553a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1301412037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10905,7 +10892,6 @@ GameObject:
   - component: {fileID: 1394068964}
   - component: {fileID: 1394068963}
   - component: {fileID: 1394068962}
-  - component: {fileID: 1394068965}
   - component: {fileID: 1394068966}
   m_Layer: 0
   m_Name: GameManager (1)
@@ -10926,6 +10912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eecd47b6304e1c4fab49a773788a9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveSpawner: {fileID: 0}
   healthAmount: 100
   healthBar: {fileID: 1051648467}
 --- !u!114 &1394068963
@@ -10956,18 +10943,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1394068965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394068961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead437f38f394ad488ed92cc578d3b0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1394068966
 MonoBehaviour:
   m_ObjectHideFlags: 0

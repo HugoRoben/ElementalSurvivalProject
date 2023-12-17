@@ -17,13 +17,13 @@ In de game begint de speler met het gekozen element (zie de schets van het main 
 
 ## Core mechanic diagram:
 
-![](core_mechanic_diagram.png)
+![](AfbeeldingenProposalEnReview/core_mechanic_diagram.png)
 
 ## Hoofdmenu schets
-![](main_menu_fire.png) ![](main_menu_air.png)
+![](AfbeeldingenProposalEnReview/main_menu_fire.png) ![](AfbeeldingenProposalEnReview/main_menu_air.png)
 
 ## In game schets
-![](InGameSchets.png)\
+![](AfbeeldingenProposalEnReview/InGameSchets.png)\
 Voor de controlls wil ik 'WASD' gebruiken als basis om de speler rond te laten lopen. De speler kan een aanval uitvoeren met de linker muis knop, de speler kan sprinten door op shift te drukken, 
 en de speler kan springen door op spatie te drukken. De speler beweegt door de itembalk heen met het muiswiel. In het geval ik toekom aan het toevoegen van een hongerstatus voor de speler en elixir items die spawnen om de honger op te lossen, kan dit via dezelfde controlls als een aanval uitgevoerd worden. Optioneel is ook om de speler de camera rond kan laten draaien en hiermee als het ware om zich heen te laten kijken, dit kan door de rechtermuisknop ingedrukt te houden. 
 Onderin het beeld wat de speler ziet in de game is de balk waarop de levens van de speler te zien nzijn. Als de speler damage ontvangt dan wordt de balk leger. Als de balk helemaal leeg is, Links in beeld zijn de items te zien die de speler tot zijn of haar beschikking heeft. Ook is in deze balk huidig geselecteerde item van de speler te zien.
