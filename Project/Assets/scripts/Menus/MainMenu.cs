@@ -39,12 +39,10 @@ public class MainMenu : MonoBehaviour
     }
     public void OpenControls()
     {
-        // pauseMenu.SetActive(false);
         controlsPopUp.SetActive(true);
     }
     public void ExitControls()
     {
-        // pauseMenu.SetActive(true);
         controlsPopUp.SetActive(false);
     }
 }

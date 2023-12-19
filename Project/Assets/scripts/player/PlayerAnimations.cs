@@ -9,6 +9,8 @@ public class PlayerAnimations : MonoBehaviour
     private Animator knop;
     private int previousAnimatorStateHash;
     public Camera cam;
+    private bool isRolling = false;
+    private bool isShooting = false;
     void Start()
     {
         knop = GetComponent<Animator>();
@@ -20,62 +22,61 @@ public class PlayerAnimations : MonoBehaviour
     {
         if (!PauseMenu.isPaused)
         {
-            bool MoveForwardAnimation = knop.GetBool(isWalkingHash);
-            bool MoveBackAnimation = knop.GetBool("MoveBackAnimation");
-            bool MoveLeftAnimation = knop.GetBool("MoveLeftAnimation");
-            bool MoveRightAnimation = knop.GetBool("MoveRightAnimation");
-            bool SpellOver = knop.GetBool("SpellOver");
             bool WIsHeld = Input.GetKey(KeyCode.W);
             bool AIsHeld = Input.GetKey(KeyCode.A);
             bool DIsHeld = Input.GetKey(KeyCode.D);
             bool SIsHeld = Input.GetKey(KeyCode.S);
-            // Choose which shoot animtation to play depending on selected attacks
+            knop.SetBool("MoveBackAnimation", SIsHeld);
+            knop.SetBool("MoveForwardAnimation", WIsHeld);
+            knop.SetBool("MoveLeftAnimation", AIsHeld);
+            knop.SetBool("MoveRightAnimation", DIsHeld);
+
+
+            // Choose which shoot animation to play depending on selected attacks
             chooseShootAnimation();
-    
-            if (!MoveForwardAnimation && WIsHeld) knop.SetBool(isWalkingHash, true);
-    
-            if (MoveForwardAnimation && !WIsHeld) knop.SetBool(isWalkingHash, false);
-    
-            if (!MoveLeftAnimation && AIsHeld) knop.SetBool("MoveLeftAnimation", true);
-    
-            if (MoveLeftAnimation && !AIsHeld) knop.SetBool("MoveLeftAnimation", false);
-        
-            if (!MoveRightAnimation && DIsHeld) knop.SetBool("MoveRightAnimation", true);
-    
-            if (MoveRightAnimation && !DIsHeld) knop.SetBool("MoveRightAnimation", false);
-    
-            if (!MoveBackAnimation && SIsHeld) knop.SetBool("MoveBackAnimation", true);
-    
-            if (MoveBackAnimation && !SIsHeld) knop.SetBool("MoveBackAnimation", false);
-            // Roll left or right if A or D is pressed, roll forward if only W is pressed
-            if (Input.GetKeyDown("space") && AIsHeld) knop.SetTrigger("RollLeft");
-            if (Input.GetKeyDown("space") && DIsHeld) knop.SetTrigger("RollRight");
-            if (Input.GetKeyDown("space") && WIsHeld && !AIsHeld && ! DIsHeld) knop.SetTrigger("RollForward");
-            // Attack with left mouse
-            if (Input.GetMouseButtonDown(0)) knop.SetTrigger("CastSpell");
+
+            // Roll animations
+            if (Input.GetKeyDown("space") && !isRolling && !isShooting)
+            {
+                isRolling = true;
+
+                if (AIsHeld) knop.SetTrigger("RollLeft");
+                else if (DIsHeld) knop.SetTrigger("RollRight");
+                else if (WIsHeld && !AIsHeld && !DIsHeld) knop.SetTrigger("RollForward");
+            }
+
+            // Attack animation
+            if (Input.GetMouseButtonDown(0) && !isRolling && !isShooting) 
+            {
+                isShooting = true;
+                knop.SetTrigger("CastSpell");
+            }
         }
-        
+    }
+
+    // This method is called by an Animation Event at the end of the roll animation
+    public void OnRollAnimationComplete()
+    {
+        isRolling = false;
     }
 
     private void chooseShootAnimation()
     {
-        if (inventoryUI.selectedItemIndex == 0)
+        knop.SetBool("WaterAttack", false);
+        knop.SetBool("AirAttack", false);
+        knop.SetBool("EarthAttack", false);
+
+        switch (inventoryUI.selectedItemIndex)
         {
-            knop.SetBool("WaterAttack", true);
-            knop.SetBool("AirAttack", false);
-            knop.SetBool("EarthAttack", false);
-        }
-        if (inventoryUI.selectedItemIndex == 1)
-        {
-            knop.SetBool("WaterAttack", false);
-            knop.SetBool("AirAttack", true);
-            knop.SetBool("EarthAttack", false);
-        }
-        if (inventoryUI.selectedItemIndex == 2)
-        {
-            knop.SetBool("WaterAttack", false);
-            knop.SetBool("AirAttack", false);
-            knop.SetBool("EarthAttack", true);
+            case 0:
+                knop.SetBool("WaterAttack", true);
+                break;
+            case 1:
+                knop.SetBool("AirAttack", true);
+                break;
+            case 2:
+                knop.SetBool("EarthAttack", true);
+                break;
         }
     }
 
@@ -87,7 +88,7 @@ public class PlayerAnimations : MonoBehaviour
     public Transform aimpoint;
     public float bulletForce = 10f;
     GameObject bullet;
-
+    // animations event function for firing water and earth bullets
     public void FireBulletFromAnimationEvent()
     {
         bullet = Instantiate(bulletPrefabArray[inventoryUI.selectedItemIndex],
@@ -108,7 +109,9 @@ public class PlayerAnimations : MonoBehaviour
             shootDirection.y = 0f;
             bulletRb.velocity = shootDirection.normalized * bulletForce;
         }
+        isShooting = false;
     }
+    // different function for firing air bullets, spawned at a different point
     public void FireAirBulletFromAnimationEvent()
     {
         bullet = Instantiate(bulletPrefabArray[inventoryUI.selectedItemIndex],
@@ -129,6 +132,6 @@ public class PlayerAnimations : MonoBehaviour
             shootDirection.y = 0f;
             bulletRb.velocity = shootDirection.normalized * bulletForce;
         }
+        isShooting = false;
     }
-        
 }

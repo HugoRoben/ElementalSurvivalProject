@@ -29,12 +29,11 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
-        int ThisWave = waveSpawner.CurrentWave + 1;
+        int ThisWave = PlayerPrefs.GetInt("CurrentWave", 0) + 1;
         HandleItemScrolling();
         health.text = playerhealthManager.healthAmount.ToString();
         enemiesKilled.text = waveSpawner.EnemiesTotal.ToString();
         roundNumber.text = ThisWave.ToString();
-        // roundNumber.text = waveSpawner.Waves[waveSpawner.CurrentWave].GetMonsterSpawnList().Length.ToString();
     }
 
     void UpdateUI()

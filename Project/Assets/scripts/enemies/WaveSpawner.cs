@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    // 
     [System.Serializable]
     public class WaveContent
     {
@@ -16,20 +17,22 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] public WaveContent[] Waves;
 
-    public InputManager inputManager;
+    //
 
-    public int CurrentWave = 0;
-    public int EnemiesKilled = 0;
-    public int EnemiesTotal = 0;
     
+    public InputManager inputManager;
+    public int EnemiesKilled = 0;
+    private int CurrentWave = 0;
+    public int EnemiesTotal = 0;
+    public InventoryUI inventoryUI;
 
     void Start()
     {
         SpawnWave();
     }
-    public InventoryUI inventoryUI;
     void Update()
     {
+        // make the variables EnemiesTotal and CurrentWave available in different scenes for the game-over scene
         PlayerPrefs.SetInt("EnemiesTotal", EnemiesTotal);
         PlayerPrefs.SetInt("CurrentWave", CurrentWave);
         if (EnemiesKilled == Waves[CurrentWave].GetMonsterSpawnList().Length)
@@ -57,10 +60,12 @@ public class WaveSpawner : MonoBehaviour
     public GameObject earthPickUp;
     public Transform airPickUpTransform;
     public Transform earthPickUpTransform;
+    // Spawn the air attack pickup item
     void spawnAirPickup()
     {
         Instantiate(airPickUp, airPickUpTransform.position, airPickUpTransform.rotation);
     }
+    // Spawn the earth attack pickup item
     void spawnEarthPickup()
     {
         Instantiate(earthPickUp, earthPickUpTransform.position, earthPickUpTransform.rotation);

@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
+    // bool that determines which of the two enemies in game the script is about
+    // value is set in the editor, true = fast, false = slow enemy
+    public bool FastOrSlowEnemy;
     public NavMeshAgent agent;
     public LayerMask whatIsGround, whatIsPlayer;
     public Vector3 walkPoint;
@@ -15,6 +18,7 @@ public class EnemyAi : MonoBehaviour
     private Animator mAnimator;
     Transform player;
     public float speed = 5.0f;
+    public float rotationSpeed = 8.0f;
     // possible animation states for enemies
     public State state;
     public enum State
@@ -77,7 +81,7 @@ public class EnemyAi : MonoBehaviour
     // function performed during approaching state of the enemies
     private void Approaching()
     {
-        mAnimator.SetTrigger("enemyShoot");
+        if (!FastOrSlowEnemy) mAnimator.SetTrigger("enemyShoot");
         mAnimator.SetBool("Idle", false);
         mAnimator.SetBool("isApproaching", true);
         mAnimator.SetBool("isAttacking", false);
@@ -137,14 +141,15 @@ public class EnemyAi : MonoBehaviour
 
     // meleeHitbox is the point the distance is calculated from during the attack animation of the enemies.
     public Transform meleeHitbox;
+    public float radius  = 9;
     public void DamageAnimationEvent()
     {
         var gameManager = FindObjectOfType<PlayerhealthManager>();
         if (gameManager != null)
         {
-            float radius  = 7;
+            
             float distance = Vector3.Distance(player.position, meleeHitbox.position);
-            if (distance <= radius) gameManager.PlayerTakeDamage(3);
+            if (distance <= radius) gameManager.PlayerTakeDamage(5);
         }
     }
     // variables needer for ShootAtPlayer()

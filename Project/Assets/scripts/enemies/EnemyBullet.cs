@@ -1,3 +1,5 @@
+// Script managing the collisions of bullets shot by enemies
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +18,7 @@ public class EnemyBullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameManager.PlayerTakeDamage(2);
+            gameManager.PlayerTakeDamage(4);
             Destroy(gameObject);
         }
         Destroy(gameObject);
