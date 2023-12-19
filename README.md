@@ -4,20 +4,20 @@
 #### 13424718
 
 ### Beschrijving
-Elemental survival is een third person shooter, gebaseerd op Avatar: The legend of Aang. In de game speel je met Aang, of een soldaat uit het aarde rijk tegen de soldaten van de vuurnatie. De game speelt af in rondes. De speler begint met de water aanval en kan door de rondes heen items oppakken om zo ook de lucht en vuuraanval te krijgen!\
+Elemental survival is een third person shooter, gebaseerd op Avatar: The legend of Aang. In de game speel je met Aang, of een soldaat uit het aarderijk tegen de soldaten van de vuurnatie. De game speelt af in rondes. De speler begint met de wateraanval en kan door de rondes heen items oppakken om zo ook de lucht en vuuraanval te krijgen!\
 Het spel is bedoeld voor jongeren die houden van third person shooters en affiniteit hebben met de serie Avatar: The legend of Aang. De game tracht de speler terug te brengen naar het gevoel en de tijd van Avatar: The legend of Aang. Zo kan de speler met Aang zelf spelen en zijn de tegenstanders precies zoals in de serie zelf.\
 Het doel van het spel is om zoveel mogelijk rondes te overleven en daarbij zoveel mogelijk kills te verzamelen. De rondes van de game worden moeilijker naarmate de game vordert. Er spawnen meer enemies en per ronde zijn er meer enemies die op de speler schieten, in tegenstelling tot de wat makkelijkere enemies die alleen op de speler afrennen en deze proberen te slaan. De speler kan zich voortbewegen door te lopen, sprinten of rollen. Voor het spelen van de game is het sterk aangeraden dat de speler beschikt over een externe muis. 
 
 ### Controls:
 - WASD: rondlopen
-- left-shift: sprinten
+- linker-shift: sprinten
 - spatie: rollen
 - linker muisknop: schieten
 - E: pauzemenu
 
-### feautures:
+### Features:
 - Aang-karakter (speelbaar)
-- Aarde-rijk soldaat (speelbaar)
+- Aarderijk soldaat (speelbaar)
 - Vuurnatie-soldaat (enemy)
 - Drie verschillende aanvallen (lucht, aarde, water)
 - Vuuraanval voor de enemies
@@ -33,21 +33,21 @@ Het doel van het spel is om zoveel mogelijk rondes te overleven en daarbij zovee
 
 
 ### Instructies voor het installeren
-Om te openen in Unity is versie 2021.3.32 nodig: https://unity.com/releases/editor/whats-new/2021.3.32\
+Om te openen in Unity is versie 2021.3.32 of nieuwer nodig: https://unity.com/releases/editor/whats-new/2021.3.32\
 - Download de volledige repository
 - Ga in Unity Hub naar add -> project from disk -> selecteer de map met dit project er in.\
 
-De build kan gedownload worden via:
-
+Voor het spelen van de laatste build:
+- Download de map `builds` -> open `ElementalSurvival.exe`
 
 ### Bronvermelding en dankbetuiging
 
-- De code in HealthManager.cs is deels copyright Code Monkey, 2018 (https://www.youtube.com/watch?v=0T5ei9jN63M). (De code uit PlayerHealthmanager.cs deels ook)
-- De code uit Inventory.cs, Item.cs, ItemPickUp.cs, InventorySlot.cs en InventoryUi.cs is deels copyright Brackeys, 2017 (https://www.youtube.com/watch?v=HQNl3Ff2Lpo)
+- De code in `HealthManager.cs` is deels copyright Code Monkey, 2018 (https://www.youtube.com/watch?v=0T5ei9jN63M). (De code uit PlayerHealthmanager.cs deels ook)
+- De code uit `Inventory.cs`, `Item.cs`, `ItemPickUp.cs`, `InventorySlot.cs` en `InventoryUi.cs` is deels copyright Brackeys, 2017 (https://www.youtube.com/watch?v=HQNl3Ff2Lpo)
 - De animaties uit de game zijn copyright Blink, 2022 (https://assetstore.unity.com/packages/3d/animations/free-32-rpg-animations-215058)
 - De texture voor de steen aanval is copyright PolyHaven, 2020 (https://polyhaven.com/a/aerial_grass_rock)
 - De zand-texture van het terrein is copyright textures.com, 2021 (https://www.textures.com/category/rock/349)
-- De achtergonden van de karakters in main menu zijn copyright redbubble.com, 2021
+- De achtergond van de karakters in main menu zijn copyright redbubble.com, 2021
 - De bruine afbeelding gebruikt in main menu, pauzemenu, inventory balk en game-over menu is copyright Pogle, 2023
 - De vuurnatie afbeelding op de vlaggen in de arena is copyright Abullah Mohammed (https://nl.pinterest.com/pin/519602875760850604/)
 - Embleem voor luchtaanval is copyright Shutterstock (https://www.shutterstock.com/nl/image-vector/smoke-cloud-explosion-dust-puff-cartoon-1091493323)
