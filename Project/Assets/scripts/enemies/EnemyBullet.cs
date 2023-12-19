@@ -1,3 +1,5 @@
+// Script managing the collisions of bullets shot by enemies
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +15,10 @@ public class EnemyBullet : MonoBehaviour
             // Ignore the collision with the specified tag
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         }
-
+        // deal damage if player is hit
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameManager.PlayerTakeDamage(2);
+            gameManager.PlayerTakeDamage(4);
             Destroy(gameObject);
         }
         Destroy(gameObject);

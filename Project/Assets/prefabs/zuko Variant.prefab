@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a14e96b8c647a647b628a983dd38230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FastOrSlowEnemy: 0
   agent: {fileID: -2149054379101952134}
   whatIsGround:
     serializedVersion: 2
@@ -559,16 +560,15 @@ MonoBehaviour:
   isPatroling: 0
   isApproaching: 0
   isAttacking: 0
-  state: 0
   speed: 12
-  stoppingDistance: 2.5
-  timer: 5
-  bulletTime: 5
+  rotationSpeed: 30
+  state: 0
+  stoppingDistance: 1
+  meleeHitbox: {fileID: 8194474849474862197}
+  radius: 10
   projectile: {fileID: 8909591610959309791, guid: b304b969ec2f95a4192b47dbfe44d41c, type: 3}
   bulletForce: 30
   firePoint: {fileID: 5926564927051435884}
-  rotationSpeed: 30
-  meleeHitbox: {fileID: 8194474849474862197}
 --- !u!4 &8194474849474862197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2417913777383561786, guid: ab1c5faed60cdde4f8a8569536fea90a, type: 3}

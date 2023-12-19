@@ -1,4 +1,5 @@
-using System.Collections;
+// script that manages the framework for the inventory
+
 using System.Collections.Generic;
 using UnityEngine;
 public class Inventory : MonoBehaviour
