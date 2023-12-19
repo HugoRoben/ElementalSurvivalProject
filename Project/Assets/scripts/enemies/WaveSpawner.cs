@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 // script that makes the enemies spawn in waves
 
+=======
+using System.Collections;
+using System.Collections.Generic;
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+<<<<<<< HEAD
     // code is copyright 2022 The Game Dev Cave
+=======
+    // 
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
     [System.Serializable]
     public class WaveContent
     {
@@ -16,6 +25,10 @@ public class WaveSpawner : MonoBehaviour
     }
 
     [SerializeField] public WaveContent[] Waves;
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
     //
 
     

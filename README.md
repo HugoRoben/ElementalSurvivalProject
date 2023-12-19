@@ -34,8 +34,16 @@ Het doel van het spel is om zoveel mogelijk rondes te overleven en daarbij zovee
 
 ### Instructies voor het installeren
 Om te openen in Unity is versie 2021.3.32 of nieuwer nodig: https://unity.com/releases/editor/whats-new/2021.3.32\
+<<<<<<< HEAD
 - Download de volledige `Project` map
 - Ga in Unity Hub naar add -> project from disk -> selecteer de map met dit project er in.
+=======
+- Download de volledige repository
+- Ga in Unity Hub naar add -> project from disk -> selecteer de map met dit project er in.\
+
+Voor het spelen van de laatste build:
+- Download de map `builds` -> open `ElementalSurvival.exe`
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 
 ### Bronvermelding en dankbetuiging
 

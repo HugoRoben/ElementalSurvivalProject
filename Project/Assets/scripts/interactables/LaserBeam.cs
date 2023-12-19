@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // script that manages the laserbeams coming out of the items for new attacks
 
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 using UnityEngine;
 
 public class LaserBeam : MonoBehaviour

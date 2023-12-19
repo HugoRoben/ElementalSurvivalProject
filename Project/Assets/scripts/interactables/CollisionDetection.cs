@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 // script that manages the collisions for the bullets the player shoots
 
+=======
+using Unity.VisualScripting;
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
@@ -12,14 +16,22 @@ public class CollisionDetection : MonoBehaviour
 
         if (collision.gameObject.CompareTag("EnemyFire"))
         {
+<<<<<<< HEAD
             // get the healthmanager component of the enemy the bullet collided with
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
             HealthManager healthManager = collision.gameObject.GetComponent<HealthManager>();
 
             if (healthManager != null)
             {
+<<<<<<< HEAD
                 // find inventory gameobject to see which attack is selected
                 var inventoryUI = FindObjectOfType<InventoryUI>();
                 // check which attack is performed
+=======
+                var inventoryUI = FindObjectOfType<InventoryUI>();
+
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
                 if (inventoryUI.selectedItemIndex == 0) healthManager.TakeDamage(waterAttackDamage);
                 if (inventoryUI.selectedItemIndex == 1) 
                 {

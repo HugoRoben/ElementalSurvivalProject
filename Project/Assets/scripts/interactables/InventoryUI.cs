@@ -3,6 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class InventoryUI : MonoBehaviour
     // Index of the currently selected item in the inventory
     public int selectedItemIndex = 0;
 
+<<<<<<< HEAD
     // UI elements for displaying player health, enemies killed, and round number
     public TextMeshProUGUI health;
     public TextMeshProUGUI enemiesKilled;
@@ -27,6 +29,8 @@ public class InventoryUI : MonoBehaviour
     public PlayerhealthManager playerhealthManager;
     public WaveSpawner waveSpawner;
 
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
     void Start()
     {
         // Get the Inventory instance and subscribe to the item changed callback
@@ -35,15 +39,29 @@ public class InventoryUI : MonoBehaviour
 
         // Get references to inventory slots
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+<<<<<<< HEAD
 
         // Set the initial selected item index and update the UI
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
         selectedItemIndex = 0;
         UpdateItemSelectionUI();
     }
 
+<<<<<<< HEAD
     void Update()
     {
         // Retrieve the current wave number and update roundnumber UI
+=======
+    public TextMeshProUGUI  health;
+    public TextMeshProUGUI  enemiesKilled;
+    public TextMeshProUGUI roundNumber;
+    public PlayerhealthManager playerhealthManager;
+    public WaveSpawner waveSpawner;
+
+    void Update()
+    {
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
         int ThisWave = PlayerPrefs.GetInt("CurrentWave", 0) + 1;
         HandleItemScrolling();
         // update the healthamount and total kills in ui

@@ -1,13 +1,25 @@
+<<<<<<< HEAD
 // script to manage all the input for the player
 
 using UnityEngine;
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 
 public class InputManager : MonoBehaviour
 {
     public MovePlayer movePlayer;
     public MoveCamera moveCamera;
+<<<<<<< HEAD
     public float sprintSpeedAdd = 3;
 
+=======
+    
+    public float sprintSpeedAdd = 3;
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
     // camera settings
     public float sensitivity = 2.0f;
     float mouseZoom; float mouseX; float mouseY; float xRotation;

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // script for the game-over scene
 
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;

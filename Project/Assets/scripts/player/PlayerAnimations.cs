@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 // script that manages the animator of the player
 
+=======
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
@@ -59,7 +65,10 @@ public class PlayerAnimations : MonoBehaviour
         isRolling = false;
     }
 
+<<<<<<< HEAD
     // function that determines which attack is selected to select the right attack animation
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
     private void chooseShootAnimation()
     {
         knop.SetBool("WaterAttack", false);

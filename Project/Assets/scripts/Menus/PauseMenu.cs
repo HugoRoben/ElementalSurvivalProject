@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 // script that manages the pause menu
 
+=======
+using System.Collections;
+using System.Collections.Generic;
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

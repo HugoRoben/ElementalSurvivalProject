@@ -14,7 +14,10 @@ public class HealthManager : MonoBehaviour
         healthAmount -= Damage;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
         healthBar.fillAmount = healthAmount / 80f;
+<<<<<<< HEAD
         // code for enemy dying
+=======
+>>>>>>> fe62b33e0b64134a2ecfd9fb2894ffbfb67925f0
         if (healthAmount <= 4)
         {
             enemyAnimator.SetTrigger("isDying");
